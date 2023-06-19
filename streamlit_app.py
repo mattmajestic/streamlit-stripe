@@ -1,20 +1,5 @@
 import streamlit as st
 
-# Add CSS styles
-st.markdown(
-    """
-    <style>
-    .stApp {
-        max-width: 800px;
-        margin: 0 auto;
-        padding-top: 2em;
-        padding-bottom: 2em;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
