@@ -15,9 +15,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Centered container
-st.markdown('<div class="stApp">', unsafe_allow_html=True)
-
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
@@ -25,6 +22,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# Centered container
+st.markdown('<div class="stApp">', unsafe_allow_html=True)
 
 # Section 1: About the Space
 st.title("30A Bramble Beach Rental!")
@@ -50,7 +50,16 @@ selected_date = st.date_input("Select a week", help="Choose the starting date of
 st.title("Payment")
 st.markdown("💳 *Enter your payment details to secure your reservation*")
 
-# Stripe payment integration can be added here
+# Stripe payment integration
+stripe_js = """
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<stripe-buy-button
+  buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"
+  publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"
+></stripe-buy-button>
+"""
+
+st.components.v1.html(stripe_js, height=300)
 
 # Display success message after payment
 if st.button("Confirm Payment"):
