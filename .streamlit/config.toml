@@ -1,6 +1,19 @@
+[server]
+headless = true
+enableCORS = false
+
 [theme]
-primaryColor = "#1E90FF"  # Blue background color
-backgroundColor = "#1E90FF"  # Blue background color
-secondaryBackgroundColor = "#1E90FF"  # Blue background color
+primaryColor = "#0B4274"  # Darker blue background color
+backgroundColor = "#0B4274"  # Darker blue background color
+secondaryBackgroundColor = "#0B4274"  # Darker blue background color
 textColor = "#FFFFFF"  # White text color
 font = "sans-serif"  # Specify the desired font if needed
+
+[theme.base]
+"background-color" = "#0B4274"
+"padding" = "2em"
+
+[theme.body]
+"background-color" = "#0B4274"
+"padding-top" = "2em"
+"padding-bottom" = "2em"
