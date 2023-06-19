@@ -9,6 +9,22 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Add CSS styles
+st.markdown(
+    """
+    <style>
+    .stApp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Section 1: About the Space
 st.title("30A Bramble Beach Rental!")
 st.markdown("ℹ️ *3 bedrooms, pool, and close to the beach!*")
