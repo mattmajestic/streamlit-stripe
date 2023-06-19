@@ -50,6 +50,13 @@ selected_date = st.date_input("Select a week", help="Choose the starting date of
 st.title("Payment")
 st.markdown("💳 *Enter your payment details to secure your reservation*")
 
+# Display success message after payment
+if st.button("Confirm Payment"):
+    st.success("Payment successful! Your reservation is confirmed.")
+
+# End of centered container
+st.markdown('</div>', unsafe_allow_html=True)
+
 # Stripe payment integration
 stripe_js = """
 <script async src="https://js.stripe.com/v3/buy-button.js"></script>
@@ -59,11 +66,4 @@ stripe_js = """
 ></stripe-buy-button>
 """
 
-st.components.v1.html(stripe_js, height=300)
-
-# Display success message after payment
-if st.button("Confirm Payment"):
-    st.success("Payment successful! Your reservation is confirmed.")
-
-# End of centered container
-st.markdown('</div>', unsafe_allow_html=True)
+st.markdown(stripe_js, unsafe_allow_html=True)
