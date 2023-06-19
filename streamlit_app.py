@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.components.v1 import html
 
 # Set page configuration
 st.set_page_config(
@@ -30,14 +31,6 @@ selected_date = st.date_input("Select a week", help="Choose the starting date of
 
 # Section 3: Take Payments via Stripe
 st.title("Payment")
-st.markdown("💳 *Enter your payment details to secure your reservation*")
-
-# Display success message after payment
-if st.button("Confirm Payment"):
-    st.success("Payment successful! Your reservation is confirmed.")
-
-# End of centered container
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Stripe payment integration
 stripe_js = """
@@ -48,4 +41,6 @@ stripe_js = """
 ></stripe-buy-button>
 """
 
-st.markdown(stripe_js, unsafe_allow_html=True)
+html(stripe_js)
+st.write("""""")
+st.image("beach_payment.png", caption="Scan the QR code to pay")
