@@ -8,9 +8,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Centered container
-st.markdown('<div class="stApp">', unsafe_allow_html=True)
-
 # Section 1: About the Space
 st.title("30A Bramble Beach Rental!")
 st.markdown("ℹ️ *3 bedrooms, pool, and close to the beach!*")
