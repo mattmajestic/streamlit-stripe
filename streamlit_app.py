@@ -1,5 +1,23 @@
 import streamlit as st
 
+# Add CSS styles
+st.markdown(
+    """
+    <style>
+    .stApp {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Centered container
+st.markdown('<div class="stApp">', unsafe_allow_html=True)
+
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
@@ -38,3 +56,5 @@ st.markdown("💳 *Enter your payment details to secure your reservation*")
 if st.button("Confirm Payment"):
     st.success("Payment successful! Your reservation is confirmed.")
 
+# End of centered container
+st.markdown('</div>', unsafe_allow_html=True)
