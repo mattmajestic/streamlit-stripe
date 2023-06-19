@@ -1,28 +1,25 @@
 import streamlit as st
 from streamlit.components.v1 import html
 
+
+# Add CSS styles
+st.markdown(
+    """
+    <style>
+    .st-bk {
+        color: white !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
     page_icon="🌴",
     layout="wide",
     initial_sidebar_state="expanded",
-)
-
-# Add CSS styles
-st.markdown(
-    """
-    <style>
-    .stApp {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
 )
 
 # Section 1: About the Space
