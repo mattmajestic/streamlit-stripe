@@ -44,15 +44,16 @@ elif page == "Booking and Payment":
 
     st.title("Payment")
 
-    # Stripe payment integration
-    stripe_js = """
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <stripe-buy-button
-      buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"
-      publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"
-    ></stripe-buy-button>
-    """
+    
+    # Stripe payment integration	
+    stripe_js = """	
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
+    <stripe-buy-button	
+      buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
+      publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
+    ></stripe-buy-button>	
+    """	
 
-    st.markdown(stripe_js, unsafe_allow_html=True)
-    st.write("")
+    html(stripe_js)	
+    st.write("""""")	
     st.image("beach_payment.png", caption="Scan the QR code to pay")
