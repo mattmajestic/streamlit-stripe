@@ -78,9 +78,9 @@ elif page == "Booking and Payment":
         confirm_button
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
+        terms_accepted = False
+        st.write("Thanks for confirming the terms and conditions!")
         st.title("Payment")
-        webbrowser.open_new_tab(stripe_checkout_url)
-        # Stripe payment integration	
         stripe_js = """	
         <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
         <stripe-buy-button	
