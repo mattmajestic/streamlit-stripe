@@ -91,28 +91,26 @@ elif page == "Booking and Payment":
         st.write(terms_and_conditions)
         # Render the confirm button
         confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
-    else:
-        st.empty()
-    # Show the modal with the legal terms when the terms button is clicked
-    if confirm_button:
-        terms_state = False
-        confirm_time = datetime.now().strftime("%H:%M:%S")
-        c.execute("INSERT INTO bookings (start_date, end_date,email,time) VALUES (?, ?,?,?)",
-                  (str(selected_start_date), str(selected_end_date), email, confirm_time))
-        conn.commit()
-        conn.close()
-        st.write("Thanks for confirming the terms and conditions!")
-        st.title("Payment")
-        stripe_js = """	
-        <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
-        <stripe-buy-button	
-        buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
-        publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
-        ></stripe-buy-button>	
-        """	
-        html(stripe_js)
-        st.write("""""")	
-        st.image("beach_payment.png", caption="Scan the QR code to pay")
+        # Show the modal with the legal terms when the terms button is clicked
+        if confirm_button:
+            terms_state = False
+            confirm_time = datetime.now().strftime("%H:%M:%S")
+            c.execute("INSERT INTO bookings (start_date, end_date,email,time) VALUES (?, ?,?,?)",
+                    (str(selected_start_date), str(selected_end_date), email, confirm_time))
+            conn.commit()
+            conn.close()
+            st.write("Thanks for confirming the terms and conditions!")
+            st.title("Payment")
+            stripe_js = """	
+            <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
+            <stripe-buy-button	
+            buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
+            publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
+            ></stripe-buy-button>	
+            """	
+            html(stripe_js)
+            st.write("""""")	
+            st.image("beach_payment.png", caption="Scan the QR code to pay")
 # Terms & Conditions page
 if page == "Terms & Conditions":
         st.info(terms_and_conditions)
