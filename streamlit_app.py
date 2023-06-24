@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
+import sqlite3
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -21,6 +22,21 @@ If you have any questions or concerns regarding these terms, please contact us b
 '''
 
 stripe_checkout_url = "https://checkout.stripe.com/c/pay/cs_test_a1Gz1WBGJfRzECuAYa0YByCHyemYJqzQLUYrBuB4Z23nZbX64QQDfHBhF3#fidkdWxOYHwnPyd1blpxYHZxWjA0TG1kZmxHXDJJMFJXQERPclNIR3dmfXMwbkdAfURsYl80RG9pPXxGVm98UWFVNmlEbW1fM0d2RFBETGhcPHdGd25pYmd8UzNCbz0zdE1da1ZpXDZDPWkwNTVOTUFLSmI2dicpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo0MW41NmRiaUZgY3I0aVZhVFYnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2Pyoqb3YrdnF3bHVgK2ZqaConKSdpamZkaWAnPydgaycpJ2BoZ2BhVmpwd2ZgJz8nZ3B8Wmdxa1o0S05vVlZHXDJJMFJXQERPNXJOU112VEcneCUl"
+
+# Connect to the SQLite database
+conn = sqlite3.connect('bookings.db')
+c = conn.cursor()
+
+# Create a table to store the booking dates if it doesn't exist
+c.execute('''CREATE TABLE IF NOT EXISTS bookings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                start_date TEXT,
+                end_date TEXT,
+                email TEXT,
+                time TEXT
+            )''')
+
+terms_state = False
 
 # Set page configuration
 st.set_page_config(
@@ -51,6 +67,7 @@ if page == "About":
 # Booking and Payment page
 elif page == "Booking and Payment":
     st.title("Book Your Stay")
+    email = st.text_input("Email", "@your-email.com")
     st.markdown("🗓️ *Select the week you'd like to stay*")
 
     # Display a calendar for selecting the start date of the week
@@ -61,8 +78,6 @@ elif page == "Booking and Payment":
 
     # Display the selected week range
     st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
-
-    terms_state = False
 
     # Render the checkbox for terms and conditions
     if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
@@ -80,6 +95,10 @@ elif page == "Booking and Payment":
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
         terms_state = False
+        c.execute("INSERT INTO bookings (start_date, end_date,email) VALUES (?, ?)",
+                  (str(selected_start_date), str(selected_end_date),str(email), str(datetime.now().strftime("%H:%M:%S"))))
+        conn.commit()
+        conn.close()
         st.write("Thanks for confirming the terms and conditions!")
         st.title("Payment")
         stripe_js = """	
