@@ -81,7 +81,7 @@ elif page == "Booking and Payment":
         confirm_button
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
-        terms_state = FALSE
+        terms_state = False
         st.write("Thanks for confirming the terms and conditions!")
         st.title("Payment")
         stripe_js = """	
