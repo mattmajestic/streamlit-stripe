@@ -2,6 +2,24 @@ import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
 
+terms_and_conditions = '''
+Beach House Rental Terms and Conditions:
+
+1. Liability: The owners of the beach house shall not be held liable for any accidents, injuries, or losses incurred during the rental period. Guests assume full responsibility for their well-being and the well-being of their invitees.
+
+2. Property Care: Guests are expected to treat the beach house and its contents with care and respect. Any damages caused by guests or their invitees will be the responsibility of the guests. Damages will be assessed and repaired at the guest's expense.
+
+3. Damages and Invoicing: In the event of any damages to the property or its contents, guests will be invoiced for the repair or replacement costs. The invoiced amount will include a 15% markup on the actual cost of repair or replacement. Guests agree to promptly settle the invoice within the specified timeframe.
+
+4. Pool Usage: If the beach house includes a pool, guests acknowledge that they assume all risks associated with pool usage. Guests must adhere to any pool safety rules and guidelines provided. The owners of the beach house shall not be held liable for any accidents or injuries related to pool usage.
+
+5. Indemnification: Guests agree to indemnify and hold harmless the owners of the beach house from any claims, damages, or liabilities arising from the use of the property during the rental period.
+
+Please read these terms and conditions carefully before confirming your reservation. By accepting the rental agreement, you acknowledge that you have read, understood, and agreed to abide by these terms and conditions.
+
+If you have any questions or concerns regarding these terms, please contact us before confirming your reservation.
+'''
+
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
@@ -53,7 +71,7 @@ elif page == "Booking and Payment":
 
     # Show the modal with the legal terms when the confirm button is clicked
     if confirm_button:
-        st.info("Modal with legal terms goes here")
+        st.info(terms_and_conditions)
 
     st.title("Payment")
 

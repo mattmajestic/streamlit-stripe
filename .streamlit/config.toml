@@ -1,3 +1,5 @@
 [theme]
-backgroundColor = '#000000'
-textColor = '#FFFFFF'
+base="dark"
+
+[server]
+wideMode=true
