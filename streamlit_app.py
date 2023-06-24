@@ -76,7 +76,7 @@ elif page == "Booking and Payment":
     if terms_accepted:
         st.info(terms_and_conditions)
         confirm_button
-    else
+    else:
         st.empty()
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
