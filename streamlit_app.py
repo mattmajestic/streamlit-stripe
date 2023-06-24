@@ -1,7 +1,10 @@
 import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
-import webbrowser
+from streamlit.state.session_state import SessionState
+
+# Create or retrieve the SessionState object
+state = SessionState.get(terms_accepted=False)
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -22,9 +25,6 @@ If you have any questions or concerns regarding these terms, please contact us b
 '''
 
 stripe_checkout_url = "https://checkout.stripe.com/c/pay/cs_test_a1Gz1WBGJfRzECuAYa0YByCHyemYJqzQLUYrBuB4Z23nZbX64QQDfHBhF3#fidkdWxOYHwnPyd1blpxYHZxWjA0TG1kZmxHXDJJMFJXQERPclNIR3dmfXMwbkdAfURsYl80RG9pPXxGVm98UWFVNmlEbW1fM0d2RFBETGhcPHdGd25pYmd8UzNCbz0zdE1da1ZpXDZDPWkwNTVOTUFLSmI2dicpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo0MW41NmRiaUZgY3I0aVZhVFYnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2Pyoqb3YrdnF3bHVgK2ZqaConKSdpamZkaWAnPydgaycpJ2BoZ2BhVmpwd2ZgJz8nZ3B8Wmdxa1o0S05vVlZHXDJJMFJXQERPNXJOU112VEcneCUl"
-
-# Define a boolean variable to track the checkbox state
-terms_state = False  
 
 # Set page configuration
 st.set_page_config(
@@ -67,10 +67,14 @@ elif page == "Booking and Payment":
     st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
 
     # Render the checkbox for terms and conditions
-    terms_accepted = st.checkbox("I agree to the Terms and Conditions",value=terms_state)
+    terms_accepted = st.checkbox("I agree to the Terms and Conditions",value=state)
 
     # Render the confirm button
     confirm_button = st.button("Confirm & Pay", disabled=not terms_accepted)
+
+    # Update the SessionState object when the checkbox value changes
+    if terms_accepted != state.terms_accepted:
+        state.terms_accepted = terms_accepted
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_accepted:
