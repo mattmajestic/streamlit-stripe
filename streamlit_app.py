@@ -97,8 +97,9 @@ elif page == "Booking and Payment":
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
         terms_state = False
+        confirm_time = datetime.now().strftime("%H:%M:%S")
         c.execute("INSERT INTO bookings (start_date, end_date,email,time) VALUES (?, ?)",
-                  (str(selected_start_date), str(selected_end_date), str(email), str(datetime.now().strftime("%H:%M:%S"))))
+                  (str(selected_start_date), str(selected_end_date), email, confirm_time))
         conn.commit()
         conn.close()
         st.write("Thanks for confirming the terms and conditions!")
