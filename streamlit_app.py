@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
-from streamlit.state.session_state import SessionState
+from streamlit_server_state import server_state, server_state_lock
 
 # Create or retrieve the SessionState object
 state = SessionState.get(terms_accepted=False)
