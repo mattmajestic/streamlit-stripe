@@ -1,10 +1,6 @@
 import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
-from streamlit_server_state import server_state, server_state_lock
-
-# Create or retrieve the SessionState object
-state = SessionState.get(terms_accepted=False)
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -66,18 +62,17 @@ elif page == "Booking and Payment":
     # Display the selected week range
     st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
 
+    terms_state = False
+
     # Render the checkbox for terms and conditions
-    terms_accepted = st.checkbox("I agree to the Terms and Conditions",value=state)
+    if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
+        terms_state = True
 
     # Render the confirm button
     confirm_button = st.button("Confirm & Pay", disabled=not terms_accepted)
 
-    # Update the SessionState object when the checkbox value changes
-    if terms_accepted != state.terms_accepted:
-        state.terms_accepted = terms_accepted
-
     # Show the modal with the legal terms when the terms button is clicked
-    if terms_accepted:
+    if terms_state:
         st.info(terms_and_conditions)
         confirm_button
     else:
