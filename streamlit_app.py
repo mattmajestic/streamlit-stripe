@@ -2,11 +2,6 @@ import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
 
-# Read the CSS file
-css_file = open("styles.css", "r")
-css_styles = css_file.read()
-css_file.close()
-
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
@@ -46,6 +41,19 @@ elif page == "Booking and Payment":
 
     # Display the selected week range
     st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
+
+    # Define a boolean variable to track the checkbox state
+    terms_accepted = False
+
+    # Render the checkbox for terms and conditions
+    terms_accepted = st.checkbox("I agree to the Terms and Conditions")
+
+    # Render the confirm button
+    confirm_button = st.button("Confirm", disabled=not terms_accepted)
+
+    # Show the modal with the legal terms when the confirm button is clicked
+    if confirm_button:
+        st.info("Modal with legal terms goes here")
 
     st.title("Payment")
 
