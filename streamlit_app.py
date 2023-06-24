@@ -23,6 +23,9 @@ If you have any questions or concerns regarding these terms, please contact us b
 
 stripe_checkout_url = "https://checkout.stripe.com/c/pay/cs_test_a1Gz1WBGJfRzECuAYa0YByCHyemYJqzQLUYrBuB4Z23nZbX64QQDfHBhF3#fidkdWxOYHwnPyd1blpxYHZxWjA0TG1kZmxHXDJJMFJXQERPclNIR3dmfXMwbkdAfURsYl80RG9pPXxGVm98UWFVNmlEbW1fM0d2RFBETGhcPHdGd25pYmd8UzNCbz0zdE1da1ZpXDZDPWkwNTVOTUFLSmI2dicpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo0MW41NmRiaUZgY3I0aVZhVFYnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2Pyoqb3YrdnF3bHVgK2ZqaConKSdpamZkaWAnPydgaycpJ2BoZ2BhVmpwd2ZgJz8nZ3B8Wmdxa1o0S05vVlZHXDJJMFJXQERPNXJOU112VEcneCUl"
 
+# Define a boolean variable to track the checkbox state
+terms_state = False  
+
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",
@@ -67,7 +70,7 @@ elif page == "Booking and Payment":
     terms_accepted = False
 
     # Render the checkbox for terms and conditions
-    terms_accepted = st.checkbox("I agree to the Terms and Conditions")
+    terms_accepted = st.checkbox("I agree to the Terms and Conditions",value=terms_state)
 
     # Render the confirm button
     confirm_button = st.button("Confirm & Pay", disabled=not terms_accepted)
@@ -78,7 +81,7 @@ elif page == "Booking and Payment":
         confirm_button
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
-        terms_accepted = False
+        terms_state = FALSE
         st.write("Thanks for confirming the terms and conditions!")
         st.title("Payment")
         stripe_js = """	
