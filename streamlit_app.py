@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit.components.v1 import html
-from datetime import timedelta
+from datetime import timedelta, datetime
 import sqlite3
 
 terms_and_conditions = '''
@@ -67,7 +67,9 @@ if page == "About":
 # Booking and Payment page
 elif page == "Booking and Payment":
     st.title("Book Your Stay")
+
     email = st.text_input("Email", "@your-email.com")
+
     st.markdown("🗓️ *Select the week you'd like to stay*")
 
     # Display a calendar for selecting the start date of the week
