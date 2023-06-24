@@ -33,7 +33,7 @@ st.set_page_config(
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ("About", "Booking and Payment"))
+page = st.sidebar.radio("Go to", ("About", "Booking and Payment","Terms & Conditions"))
 
 # About page
 if page == "About":
@@ -79,7 +79,6 @@ elif page == "Booking and Payment":
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
         st.title("Payment")
-
         webbrowser.open_new_tab(stripe_checkout_url)
         # Stripe payment integration	
         stripe_js = """	
@@ -92,3 +91,6 @@ elif page == "Booking and Payment":
         html(stripe_js)
         st.write("""""")	
         st.image("beach_payment.png", caption="Scan the QR code to pay")
+# About page
+if page == "Terms & Conditions":
+        st.info(terms_and_conditions)
