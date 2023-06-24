@@ -76,6 +76,8 @@ elif page == "Booking and Payment":
     if terms_accepted:
         st.info(terms_and_conditions)
         confirm_button
+    else
+        st.empty()
     # Show the modal with the legal terms when the terms button is clicked
     if confirm_button:
         terms_state = False
@@ -91,6 +93,6 @@ elif page == "Booking and Payment":
         html(stripe_js)
         st.write("""""")	
         st.image("beach_payment.png", caption="Scan the QR code to pay")
-# About page
+# Terms & Conditions page
 if page == "Terms & Conditions":
         st.info(terms_and_conditions)
