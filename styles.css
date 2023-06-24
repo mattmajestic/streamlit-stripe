@@ -1,14 +1,17 @@
-.stApp {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
 body {
     background-color: #e6e6e6;
     font-family: 'Courier New', Courier, monospace;
     color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.stApp {
+    max-width: 800px;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 h1 {
