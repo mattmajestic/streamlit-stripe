@@ -90,7 +90,8 @@ elif page == "Booking and Payment":
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
-        st.info(terms_and_conditions)
+        expander = st.expander("View & Confirm Agreement")
+        expander.write(terms_and_conditions)
         confirm_button
     else:
         st.empty()
