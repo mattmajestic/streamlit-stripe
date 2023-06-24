@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
+import webbrowser
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -19,6 +20,8 @@ Please read these terms and conditions carefully before confirming your reservat
 
 If you have any questions or concerns regarding these terms, please contact us before confirming your reservation.
 '''
+
+stripe_checkout_url = "https://checkout.stripe.com/c/pay/cs_test_a1Gz1WBGJfRzECuAYa0YByCHyemYJqzQLUYrBuB4Z23nZbX64QQDfHBhF3#fidkdWxOYHwnPyd1blpxYHZxWjA0TG1kZmxHXDJJMFJXQERPclNIR3dmfXMwbkdAfURsYl80RG9pPXxGVm98UWFVNmlEbW1fM0d2RFBETGhcPHdGd25pYmd8UzNCbz0zdE1da1ZpXDZDPWkwNTVOTUFLSmI2dicpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo0MW41NmRiaUZgY3I0aVZhVFYnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2Pyoqb3YrdnF3bHVgK2ZqaConKSdpamZkaWAnPydgaycpJ2BoZ2BhVmpwd2ZgJz8nZ3B8Wmdxa1o0S05vVlZHXDJJMFJXQERPNXJOU112VEcneCUl"
 
 # Set page configuration
 st.set_page_config(
@@ -67,24 +70,25 @@ elif page == "Booking and Payment":
     terms_accepted = st.checkbox("I agree to the Terms and Conditions")
 
     # Render the confirm button
-    confirm_button = st.button("Confirm", disabled=not terms_accepted)
+    confirm_button = st.button("Confirm & Pay", disabled=not terms_accepted)
 
-    # Show the modal with the legal terms when the confirm button is clicked
-    if confirm_button:
+    # Show the modal with the legal terms when the terms button is clicked
+    if terms_accepted:
         st.info(terms_and_conditions)
+        confirm_button
+    # Show the modal with the legal terms when the terms button is clicked
+    if confirm_button:
+        st.title("Payment")
 
-    st.title("Payment")
-
-    
-    # Stripe payment integration	
-    stripe_js = """	
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
-    <stripe-buy-button	
-      buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
-      publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
-    ></stripe-buy-button>	
-    """	
-
-    html(stripe_js)	
-    st.write("""""")	
-    st.image("beach_payment.png", caption="Scan the QR code to pay")
+        webbrowser.open_new_tab(stripe_checkout_url)
+        # Stripe payment integration	
+        stripe_js = """	
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
+        <stripe-buy-button	
+        buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
+        publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
+        ></stripe-buy-button>	
+        """	
+        html(stripe_js)
+        st.write("""""")	
+        st.image("beach_payment.png", caption="Scan the QR code to pay")
