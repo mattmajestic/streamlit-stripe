@@ -2,6 +2,11 @@ import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta
 
+# Read the CSS file
+css_file = open("styles.css", "r")
+css_styles = css_file.read()
+css_file.close()
+
 # Set page configuration
 st.set_page_config(
     page_title="30A Bramble Beach Rental",

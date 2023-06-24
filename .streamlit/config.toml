@@ -1,6 +1,2 @@
 [theme]
-primaryColor = "#0B4274"  # Darker blue background color
-backgroundColor = "#0B4274"  # Darker blue background color
-secondaryBackgroundColor = "#0B4274"  # Darker blue background color
-textColor = "#FFFFFF"  # White text color
 font = "sans-serif"  # Specify the desired font if needed

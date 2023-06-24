@@ -1,0 +1,60 @@
+.stApp {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+body {
+    background-color: #e6e6e6;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333333;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffcc00;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #ffcc00;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+button {
+    background-color: #ffcc00;
+    color: #333333;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.2em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffd700;
+}
+
+input[type="date"] {
+    background-color: #fff;
+    color: #333333;
+    padding: 0.5em 1em;
+    border: 1px solid #999999;
+    border-radius: 0.2em;
+    font-size: 1.2rem;
+}
+
+textarea {
+    background-color: #fff;
+    color: #333333;
+    padding: 0.5em 1em;
+    border: 1px solid #999999;
+    border-radius: 0.2em;
+    font-size: 1.2rem;
+}
