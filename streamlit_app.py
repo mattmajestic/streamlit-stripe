@@ -85,14 +85,12 @@ elif page == "Booking and Payment":
     if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
         terms_state = True
 
-    # Render the confirm button
-    confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
-
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
-        expander = st.expander("View & Confirm Agreement")
-        expander.write(terms_and_conditions)
-        confirm_button
+        st.expander("View & Confirm Agreement")
+        st.write(terms_and_conditions)
+        # Render the confirm button
+        confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
     else:
         st.empty()
     # Show the modal with the legal terms when the terms button is clicked
