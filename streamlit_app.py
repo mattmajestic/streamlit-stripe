@@ -69,7 +69,7 @@ elif page == "Booking and Payment":
         terms_state = True
 
     # Render the confirm button
-    confirm_button = st.button("Confirm & Pay", disabled=not terms_accepted)
+    confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
