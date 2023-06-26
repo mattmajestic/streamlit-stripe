@@ -94,8 +94,9 @@ elif page == "Booking and Payment":
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
-        st.expander("View & Confirm Agreement")
-        st.write(terms_and_conditions)
+        with col1:
+            st.expander("View & Confirm Agreement")
+            st.write(terms_and_conditions)
         # Render the confirm button
         confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
         # Show the modal with the legal terms when the terms button is clicked
@@ -106,8 +107,8 @@ elif page == "Booking and Payment":
                     (str(selected_start_date), str(selected_end_date), email, confirm_time))
             conn.commit()
             conn.close()
-            st.write("Thanks for confirming the terms and conditions!")
-            st.title("Payment")
+            with col1:
+                st.write("Thanks for confirming the terms and conditions!")
             stripe_js = """	
             <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
             <stripe-buy-button	
@@ -115,10 +116,10 @@ elif page == "Booking and Payment":
             publishable-key="{}"
             ></stripe-buy-button>	
             """.format(stripe_publishable_key)
-            with col1:
+            with col2:
+                st.title("Payment")
                 html(stripe_js)
                 st.write("""""")	
-            with col2:
                 st.image("beach_payment.png", caption="Scan the QR code to pay")
 # Terms & Conditions page
 if page == "Terms & Conditions":
