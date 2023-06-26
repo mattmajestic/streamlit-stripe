@@ -7,7 +7,6 @@ import os
 
 # Get the Stripe publishable key from the environment variable
 stripe_publishable_key = os.environ.get("STRIPE_KEY")
-print()
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -107,14 +106,7 @@ elif page == "Booking and Payment":
             conn.close()
             st.write("Thanks for confirming the terms and conditions!")
             st.title("Payment")
-            stripe_js = """	
-            <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
-            <stripe-buy-button	
-            buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
-            publishable-key="{stripe_publishable_key}"	
-            ></stripe-buy-button>	
-            """	
-            html(stripe_js)
+            st.components.v1.html(f'<iframe width="560" height="315" src="https://checkout.stripe.com/c/pay/cs_test_a1Gz1WBGJfRzECuAYa0YByCHyemYJqzQLUYrBuB4Z23nZbX64QQDfHBhF3#fidkdWxOYHwnPyd1blpxYHZxWjA0TG1kZmxHXDJJMFJXQERPclNIR3dmfXMwbkdAfURsYl80RG9pPXxGVm98UWFVNmlEbW1fM0d2RFBETGhcPHdGd25pYmd8UzNCbz0zdE1da1ZpXDZDPWkwNTVOTUFLSmI2dicpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo0MW41NmRiaUZgY3I0aVZhVFYnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2Pyoqb3YrdnF3bHVgK2ZqaConKSdpamZkaWAnPydgaycpJ2BoZ2BhVmpwd2ZgJz8nZ3B8Wmdxa1o0S05vVlZHXDJJMFJXQERPNXJOU112VEcneCUl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', width=560, height=315, scrolling=False)
             st.write("""""")	
             st.image("beach_payment.png", caption="Scan the QR code to pay")
 # Terms & Conditions page
