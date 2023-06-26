@@ -87,10 +87,10 @@ elif page == "Booking and Payment":
         email = st.text_input("Email", "@your-email.com")
         # Display the selected week range
         st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
+        # Render the checkbox for terms and conditions
+        if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
+            terms_state = True
 
-    # Render the checkbox for terms and conditions
-    if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
-        terms_state = True
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
