@@ -82,22 +82,20 @@ elif page == "Booking and Payment":
         selected_start_date = st.date_input("Select the start date", help="Choose the starting date of your stay.")
         # Calculate the end date as one week from the start date
         selected_end_date = selected_start_date + timedelta(days=6)
-
-    with col2:
         email = st.text_input("Email", "@your-email.com")
         # Display the selected week range
         st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
         # Render the checkbox for terms and conditions
+
+    with col2:
+        st.expander("View & Confirm Agreement")
+        st.write(terms_and_conditions)
         if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
             terms_state = True
 
 
     # Show the modal with the legal terms when the terms button is clicked
     if terms_state:
-        with col1:
-            st.expander("View & Confirm Agreement")
-            st.write(terms_and_conditions)
-        # Render the confirm button
         confirm_button = st.button("Confirm & Pay", disabled=not terms_state)
         # Show the modal with the legal terms when the terms button is clicked
         if confirm_button:
