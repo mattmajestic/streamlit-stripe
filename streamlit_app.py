@@ -72,19 +72,21 @@ if page == "About":
 # Booking and Payment page
 elif page == "Booking and Payment":
     st.title("Book Your Stay")
+    # Divide the page into two columns
+    col1, col2 = st.columns(2)
 
-    email = st.text_input("Email", "@your-email.com")
+    with col1:
+        email = st.text_input("Email", "@your-email.com")
+        # Display the selected week range
+        st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
 
-    st.markdown("🗓️ *Select the week you'd like to stay*")
 
-    # Display a calendar for selecting the start date of the week
-    selected_start_date = st.date_input("Select the start date", help="Choose the starting date of your stay.")
-
-    # Calculate the end date as one week from the start date
-    selected_end_date = selected_start_date + timedelta(days=6)
-
-    # Display the selected week range
-    st.markdown(f"Selected Week: {selected_start_date} to {selected_end_date}")
+    with col2:
+        st.markdown("🗓️ *Select the week you'd like to stay*")
+        # Display a calendar for selecting the start date of the week
+        selected_start_date = st.date_input("Select the start date", help="Choose the starting date of your stay.")
+        # Calculate the end date as one week from the start date
+        selected_end_date = selected_start_date + timedelta(days=6)
 
     # Render the checkbox for terms and conditions
     if st.checkbox("I agree to the Terms and Conditions", value=terms_state):
