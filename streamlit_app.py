@@ -2,6 +2,11 @@ import streamlit as st
 from streamlit.components.v1 import html
 from datetime import timedelta, datetime
 import sqlite3
+import os
+
+
+# Get the Stripe publishable key from the environment variable
+stripe_publishable_key = os.environ.get("STRIPE_KEY")
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -105,7 +110,7 @@ elif page == "Booking and Payment":
             <script async src="https://js.stripe.com/v3/buy-button.js"></script>	
             <stripe-buy-button	
             buy-button-id="buy_btn_1NKjSSBY7L5WREAJ0wKVXsQB"	
-            publishable-key="pk_test_51IhaciBY7L5WREAJwVMBrcxv5kBExAigZ1Ajl8yCSjyTdP3lAhhZ6BsAUAImY9rCrklgbyV6Gj86qHXnSlY3F8l500KHDNOg3s"	
+            publishable-key="{stripe_publishable_key}"	
             ></stripe-buy-button>	
             """	
             html(stripe_js)
