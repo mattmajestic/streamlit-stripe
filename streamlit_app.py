@@ -115,9 +115,11 @@ elif page == "Booking and Payment":
             publishable-key="{}"
             ></stripe-buy-button>	
             """.format(stripe_publishable_key)
-            html(stripe_js)
-            st.write("""""")	
-            st.image("beach_payment.png", caption="Scan the QR code to pay")
+            with col1:
+                html(stripe_js)
+                st.write("""""")	
+            with col2:
+                st.image("beach_payment.png", caption="Scan the QR code to pay")
 # Terms & Conditions page
 if page == "Terms & Conditions":
         st.info(terms_and_conditions)
