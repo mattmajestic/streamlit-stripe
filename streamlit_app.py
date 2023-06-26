@@ -7,6 +7,7 @@ import os
 
 # Get the Stripe publishable key from the environment variable
 stripe_publishable_key = os.environ.get("STRIPE_KEY")
+print()
 
 terms_and_conditions = '''
 Beach House Rental Terms and Conditions:
@@ -113,6 +114,7 @@ elif page == "Booking and Payment":
             publishable-key="{stripe_publishable_key}"	
             ></stripe-buy-button>	
             """	
+            st.markdown(stripe_js, unsafe_allow_html=True)
             html(stripe_js)
             st.write("""""")	
             st.image("beach_payment.png", caption="Scan the QR code to pay")
