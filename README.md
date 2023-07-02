@@ -1,4 +1,4 @@
-# 30a-beach-rental
+# Streamlit Stripe Demo
 30A Beach Rental Booking &amp; Payments
 
 
@@ -7,6 +7,4 @@
 `bash ./run-local.sh` and check your host`:8501`
 
 ## Deployments
-- Streamlit Cloud: https://30a-bramble-beach-rental.streamlit.app/
-- Google Cloud: 
-
+- Streamlit Cloud: https://stripe-demo.streamlit.app/
