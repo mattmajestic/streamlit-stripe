@@ -1,6 +1,5 @@
 # Streamlit Stripe Demo
-30A Beach Rental Booking &amp; Payments
-
+Streamlit Enabled with Stripe &amp; Payments
 
 ## Run Locally or Github Codespace
 

@@ -45,7 +45,7 @@ terms_state = False
 
 # Set page configuration
 st.set_page_config(
-    page_title="30A Bramble Beach Rental",
+    page_title="Streamlit Stripe Demo",
     page_icon="🌴",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -57,7 +57,7 @@ page = st.sidebar.radio("Go to", ("About", "Booking and Payment","Terms & Condit
 
 # About page
 if page == "About":
-    st.title("30A Bramble Beach Rental!")
+    st.title("30A Bramble Beach Rental")
     st.markdown("ℹ️ *3 bedrooms, pool, and close to the beach!*")
 
     # Description of the house
