@@ -6,4 +6,4 @@ Streamlit Enabled with Stripe &amp; Payments
 `bash ./run-local.sh` and check your host`:8501`
 
 ## Deployments
-- Streamlit Cloud: https://stripe-demo.streamlit.app/
+- Streamlit Cloud: https://stripe-demo-youtube.streamlit.app/
