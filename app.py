@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit.components.v1 import html
+import streamlit.components.v1 as components
 from datetime import timedelta, datetime
 import sqlite3
 import os
@@ -122,8 +123,7 @@ elif page == "Booking and Payment":
                 url = "https://mainnet.demo.btcpayserver.org/api/v1/invoices?storeId=4r8DKKKMkxGPVKcW9TXB2eta7PTVzzs192TWM3KuY52e&price=100&currency=USD&defaultPaymentMethod=BTC"
                 link='Pay wit BTC [via this link](https://mainnet.demo.btcpayserver.org/api/v1/invoices?storeId=4r8DKKKMkxGPVKcW9TXB2eta7PTVzzs192TWM3KuY52e&price=100&currency=USD&defaultPaymentMethod=BTC)'
                 st.markdown(link,unsafe_allow_html=True)
-                st.iframe(url,width = 300,height = 500, scrolling=True)
-                
+                components.iframe(url,width = 300,height = 500, scrolling=True)
 # Terms & Conditions page
 if page == "Terms & Conditions":
         st.info(terms_and_conditions)
